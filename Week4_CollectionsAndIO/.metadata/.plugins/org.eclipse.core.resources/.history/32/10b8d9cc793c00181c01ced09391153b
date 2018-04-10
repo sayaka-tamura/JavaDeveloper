@@ -1,0 +1,46 @@
+package Week4_AS1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author Sayaka Tamura
+ * 
+ */
+
+public class ArrayListRunner {
+	public static void main(String[] args) {
+		 /* 1. Starting Small
+		 * Write a Java program to create a new ArrayList of strings.
+		 * Add some colors (string) and print out the collection.
+		 * 
+		 * Example Output:
+		 * [Red, Green, Orange, White, Black]
+		 */
+		List<String> al1 = new ArrayList<String>();
+		al1.add("Black");
+		al1.add("White");
+		al1.add("Orange");
+		al1.add("Green");
+		al1.add("Red");	
+		
+		System.out.println(al1);
+		
+//		 // Extra work:	
+//		 List<String> al0 = Arrays.asList("Red", "Green", "Orange", "White", "Black");
+//		 System.out.println(al0);
+		
+		// Another way 1 : lambda
+//		al1.forEach(s->{
+//			System.out.println(s + "!");
+//		});
+		
+		/**
+		 * 2. Iterating
+		 * Write a Java method to iterate through all elements in the previous ArrayList.
+		 * Print each color out in the format of: "Today's Color is [color]!"
+		 */
+		// ArrayListMethods.iterator(al1);
+		ArrayListMethods.iterator2(al1);
+	}
+}

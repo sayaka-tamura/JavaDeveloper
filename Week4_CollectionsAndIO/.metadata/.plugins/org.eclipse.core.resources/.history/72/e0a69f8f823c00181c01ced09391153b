@@ -1,0 +1,77 @@
+package Week4_AS1;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+
+public class ArrayListMethods {
+	private static ArrayList<String> al = null;
+
+	public ArrayListMethods() {
+		al = new ArrayList<String>();
+	}
+	
+	public void add(String string) {
+		al.add(string);
+	}
+	
+	public static void iterator() {
+		for(String s : al)
+			System.out.println("Today's Color is " + s + "!");
+	}
+	
+	// Another way: Iterator
+	public static void iterator2() {
+		Iterator<String> iterator = al.iterator();
+		while(iterator.hasNext()) {
+			String str = (String)iterator.next();
+			System.out.println("Today's Color is " + str + "!");
+		}
+	}
+
+	public static void updateElement(int i, String string) {
+		al.set(i,string);
+		System.out.println("Element: " + (i+1) + "'s color changed to " + string);
+		System.out.println(al);
+	}
+
+	public static void removeElement(int i) {
+		al.remove(i);		
+		System.out.println("Element: " + (i+1) + " has removed.");
+		//toString();
+	}
+	
+
+//	
+//	
+//	/**
+//	 *  5. Searching
+//	 *  Write a method to search your ArrayList for a specified color.
+//	 */
+//	if(al1.contains("Green"))
+//	{
+//		System.out.println("There is the value in the array");
+//	}
+//
+//	
+//	System.out.println("The index of \"Green\" is " + al1.indexOf("Green"));
+	
+	public String toString() {
+		String msg = "[";
+		int size = al.size();
+		
+		for (int i = 0; i < size-1; i++) {
+			msg += al.get(i) + ", ";	
+		}
+		msg += al.get(size-1) + "]";
+		
+		return msg;
+	}
+
+
+}
+
