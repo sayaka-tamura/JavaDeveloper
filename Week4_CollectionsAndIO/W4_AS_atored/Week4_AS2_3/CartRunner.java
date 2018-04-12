@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
 /**
  * @author Sayaka Tamura
  * 3. Simple Menu
@@ -18,13 +19,13 @@ import java.util.Scanner;
 
 public class CartRunner {
 	public static void main(String[] args) {
-		Map <Item, Integer> menu = new HashMap<Item, Integer>();
-		Integer default_quantity = 0;
-		menu.put(new Item("Hamburgers", 7.5), default_quantity);
-		menu.put(new Item("Hot Dogs", 5.99), default_quantity);
-		menu.put(new Item("Sandwiches", 6.99), default_quantity);
-		menu.put(new Item("Soda", 1.00), default_quantity);
-		menu.put(new Item("Fries", 2.50), default_quantity);
+		Map <String,Item> menu = new HashMap<String, Item>();
+
+		menu.put("Hamburgers",new Item("Hamburgers", 7.5));
+		menu.put("Hot Dogs",new Item("Hot Dogs", 5.99));
+		menu.put("Sandwiches",new Item("Sandwiches", 6.99));
+		menu.put("Soda",new Item("Soda", 1.00));
+		menu.put("Fries",new Item("Fries", 2.50));
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -46,18 +47,29 @@ public class CartRunner {
 				System.out.println("How many would you like to add?");
 				int quantity = Integer.parseInt(sc.nextLine());
 				item.addQuantity(quantity);
-				cart.put(response, item);
+				menu.put(response, item);
 				continue;
 			}
 		}
 		
+		System.out.println("Your cart:");
+		printCart(menu);
+		System.out.print("Your total: $");
+		double total = 0.00;
+		for(Item item : menu.values()) {
+			double cost = item.getPrice() * item.getQuantity();
+			total += cost;
+		}
+		System.out.print(total);
+		
+		sc.close();
+		
 	}
 
-	public static void printCart(Map<Item, Integer> menu) {
-		for(Map.Entry<Item, Integer> cartItem : menu.entrySet()) {
-			System.out.println(cartItem.getKey().getName() + ": $" + cartItem.getKey().getPrice());
-		}
-		
+	public static void printCart(Map<String, Item> menu) {
+		for(Item item : menu.values()) {
+			System.out.println(item.getName() + ": $" + item.getPrice() + " - Current Quantity: " + item.getQuantity());
+		}	
 	}
 	
 	
