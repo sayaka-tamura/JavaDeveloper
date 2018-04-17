@@ -34,7 +34,7 @@ public class TheSystem {
 	protected TheSystem() throws IOException {
         itemCollection = new HashMap<String, Item>();
         
-        if(AppSystem.class.getSimpleName().equals("AppSystem")) {
+        if(getClass().getSimpleName().equals("AppSystem")) {
         	try {
                 fis = new FileInputStream("C:\\Users\\arccy\\Desktop\\sample.txt");
                 isr = new InputStreamReader(fis, "UTF-8");

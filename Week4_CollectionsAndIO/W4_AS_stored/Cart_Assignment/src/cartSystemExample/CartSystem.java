@@ -40,5 +40,5 @@ public class CartSystem extends TheSystem{
 		System.out.format("Tax: %.2f \n", tax);
 		System.out.format("Total: %.2f \n", total);
 		System.out.println();
-    }
+	}
 }
