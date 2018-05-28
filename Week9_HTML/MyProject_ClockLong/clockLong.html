@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Clock Longer</title>
+    <link rel="stylesheet" href="clockLong.css">
+    <script src="clockLong.js"></script>
+    <script src="setting.js"></script>
+</head>
+<body id="background" onload="myFunction_36h()">
+    <div class="wrapper">
+        <div id="clock">
+            <div class="clocktitle">36 Hours Clock</div>
+            <div id="clock">
+                <div id="ampm">AM/PM</div>
+                <div id="demo_hour"></div>
+            </div>
+
+            <div>Real time Clock</div>
+            <div id="date-month-year"></div>
+            <div id="today_withoutOffset"></div>
+        </div>
+
+        <div class="btn-group">
+            <button class="button button_time active" id="changeTo36h" onclick="myFunction_36h(); stop48hClock()">36H</button>
+            <button class="button button_time" id="changeTo48h"  onclick="myFunction_48h(); stop36hClock();">48H</button>
+        </div>
+
+        <div class="toggle-group">
+            <div class="tgl-btn">
+                <div>AM/PM</div>
+                <label class="switch">
+                    <input type="checkbox" id="changeTimeMode" onclick="changeAMPM()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="tgl-btn">
+                <div>Background Color</div>
+                <label class="switch">
+                    <input type="checkbox" id="change-bg-color" onclick="changeBackGroundColor()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

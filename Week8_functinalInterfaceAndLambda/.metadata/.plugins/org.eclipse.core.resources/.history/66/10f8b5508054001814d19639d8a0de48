@@ -1,0 +1,54 @@
+package CoreJava.DAO;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import CoreJava.Models.Shopping;
+import CoreJava.SystemInterfaces.ShoppingDAOI;
+import CoreJava.util.OracleQueries;
+
+public class ShoppingDAO implements ShoppingDAOI {
+
+	@Override
+	public List<Shopping> getAllShoppingIDByUser() {
+		
+		Shopping shopping = null;
+		Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet result = null;
+        List<Shopping> shoppings = new ArrayList<Shopping>();
+        
+        try {
+        	conn = OracleConnection.getConnection();
+            stmt = conn.prepareStatement(OracleQueries.GETAllCOURSE);
+            result = stmt.executeQuery();
+            
+	        while(result != null && result.next()){
+	        	shopping = new Shopping();
+	        	shopping.setCourse_id(result.getInt(1));
+	        	shopping.setCourse_name(result.getString(2));
+	        	shopping.setMinimum_gpa(result.getDouble(3));
+
+	        	courses.add(shopping);
+	        }
+        } catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+            result.close();
+            if(stmt != null){
+                stmt.close();
+            }
+            if(conn != null){
+                conn.close();
+            }
+        }
+        
+		return courses;
+	}
+
+}

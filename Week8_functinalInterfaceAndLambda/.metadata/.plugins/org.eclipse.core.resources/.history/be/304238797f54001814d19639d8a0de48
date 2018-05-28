@@ -1,0 +1,7 @@
+package MainEntryPoint;
+
+public class MainEntryClass {
+	public static void main(String[] args) {
+		
+	}
+}

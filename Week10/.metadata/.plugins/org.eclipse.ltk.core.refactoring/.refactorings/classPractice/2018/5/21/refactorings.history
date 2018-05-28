@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;dao, mainEntry, model, resources, util&apos; to &apos;src&apos;" description="Move 5 resources to &apos;src&apos;" destination="src" element1="Stored/JDBC_Practice/Week7_JDBC_HW2/dao" element2="Stored/JDBC_Practice/Week7_JDBC_HW2/mainEntry" element3="Stored/JDBC_Practice/Week7_JDBC_HW2/model" element4="Stored/JDBC_Practice/Week7_JDBC_HW2/resources" element5="Stored/JDBC_Practice/Week7_JDBC_HW2/util" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="5" stamp="1527046991594" updateReferences="true"/>
+</session>

@@ -1,0 +1,23 @@
+package people.utils;
+
+public class OracleQueries {
+  public final static String ALLPEOPLE = "SELECT * FROM PEOPLE";  
+	  
+  public final static String GETPEOPLEBYID = "SELECT * FROM PEOPLE "
+	+ "WHERE PEOPLE_ID = ?"; 
+  
+  public final static String GETPEOPLEBYCOUNTRY = "SELECT * FROM PEOPLE "
+	+ "WHERE COUNTRY = ?"; 
+  
+  public final static String GETPEOPLEBYCITY = "SELECT * FROM PEOPLE "
+	+ "WHERE CITY = ?"; 
+  
+  public final static String GETPEOPLEBYLASTBYNAME = "SELECT * FROM PEOPLE "
+	+ "WHERE LAST_NAME = ?"; 
+}
+
+//getPeopleByID()
+//deletePeople()
+//addPeople()
+//updatePeople()
+//ListOfAllPeople()

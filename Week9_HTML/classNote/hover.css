@@ -1,0 +1,117 @@
+body{
+	font-family: Arial;
+	font-size: 8rem;
+	color: white;
+}
+
+table{
+	width:300px;
+	heigth:300px;
+	margin:auto;
+}
+
+/*td{border: solid 1px black;}*/
+
+.header{
+	font-size: 2rem;
+	margin: 0;
+	padding: 20px;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.container{
+	font-size: 15px;
+	font-weight: 700;
+	color: black;
+	background-color: white;
+	padding:10px;
+}
+
+.cell{
+	/*	width:100px;*/
+	/*height:100px;*/
+	text-align: center;
+}
+
+.cell:hover{
+	position: relative;
+	animation: mymove infinite;
+    animation-duration: 0.5s;
+}
+
+@keyframes mymove {
+    from {top: 20px;}
+    to {top: 0px;}
+}
+
+#c1 {
+	background-color: Aquamarine;
+}
+
+#c1:hover{
+	background-color: Yellow;
+}
+
+#c2{
+	background-color: DarkTurquoise;
+}
+
+#c2:hover{
+	background-color: Wheat;
+}
+
+#c3{
+	background-color: DeepSkyBlue;
+}
+
+#c3:hover{
+	background-color: SandyBrown;
+}
+
+#c4{
+	background-color: LightSkyBlue;
+}
+
+#c4:hover{
+	background-color: PeachPuff;
+}
+
+#c5{
+	background-color: MediumTurquoise;
+}
+
+#c5:hover{
+	background-color: PaleGoldenRod;
+}
+
+#c6{
+	background-color: PaleTurquoise;
+}
+
+#c6:hover{
+	background-color: Orange;
+}
+
+#c7{
+	background-color: PowderBlue;
+}
+
+#c7:hover{
+	background-color: LightSalmon;
+}
+
+#c8{
+	background-color: SkyBlue;
+}
+
+#c8:hover{
+	background-color: Khaki;
+}
+
+#c9{
+	background-color: Turquoise;
+}
+
+#c9:hover{
+	background-color: Gold;
+}

@@ -1,0 +1,32 @@
+package people.utils;
+
+public class OracleQueries {
+  public final static String ALLPEOPLE = "SELECT * FROM PEOPLE";  
+	  
+  public final static String GETPEOPLEBYID = "SELECT * FROM PEOPLE "
+	+ "WHERE PEOPLE_ID = ?"; 
+  
+  public final static String GETPEOPLEBYCOUNTRY = "SELECT * FROM PEOPLE "
+	+ "WHERE COUNTRY = ?"; 
+  
+  public final static String GETPEOPLEBYCITY = "SELECT * FROM PEOPLE "
+	+ "WHERE CITY = ?"; 
+  
+  public final static String GETPEOPLEBYLAST_NAME = "SELECT * FROM PEOPLE "
+	+ "WHERE LAST_NAME = ?"; 
+  
+  public final static String SAVEPEOPLE = "INSERT INTO PEOPLE "
+	+ "(FIRST_NAME, LAST_NAME, COMPANY_NAME, ADDRESS, CITY, COUNTRY, "
+	+ "PEOPLE_STATE, ZIP, PHONE, EMAIL)"
+	+ "VALUES(?,?,?,?,?,?,?,?,?,?)"; 
+  
+  public final static String UPDATEPEOPLE = "UPDATE PEOPLE SET "
+			+ "FIRST_NAME = ?, LAST_NAME = ?, COMPANY_NAME = ?, ADDRESS = ?, CITY = ?, COUNTRY = ?, "
+			+ "PEOPLE_STATE = ?, ZIP = ?, PHONE = ?, EMAIL = ?";
+  
+  public final static String DELETEPEOPLE = "DELETE FROM PEOPLE "
+		  + "WHERE PEOPLE_ID = ?"; 
+}
+
+
+//ListOfAllPeople()

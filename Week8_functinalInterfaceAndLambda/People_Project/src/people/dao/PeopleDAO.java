@@ -1,0 +1,191 @@
+package people.dao;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import people.model.People;
+import people.utils.OracleQueries;
+
+public class PeopleDAO {
+	public People getPeopleByID(Integer people_id) throws SQLException {
+		People people = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		
+		try {
+			conn = OracleConnection.getConnection();
+			stmt = conn.prepareStatement(OracleQueries.GETPEOPLEBYID);
+			stmt.setInt(1, people_id);
+			result = stmt.executeQuery();
+			
+			if(result.next()) {
+				people = new People();
+				people.setPEOPLE_ID(result.getInt(1));
+				people.setFIRST_NAME(result.getString(2));
+				people.setLAST_NAME(result.getString(3));
+				people.setCOMPANY_NAME(result.getString(4));
+				people.setADDRESS(result.getString(5));
+				people.setCITY(result.getString(6));
+				people.setCOUNTRY(result.getString(7));
+				people.setPEOPLE_STATE(result.getString(8));
+				people.setZIP(result.getFloat(9));
+				people.setPHONE(result.getString(10));
+				people.setEMAIL(result.getString(11));
+			}
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			result.close();
+			if(stmt != null) {
+				stmt.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+		}
+		return people;
+	}
+	
+	public List<People> getPeopleBy(final String query, String VALUE) throws SQLException, ClassNotFoundException, IOException{
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result;
+		List<People> peoples = new ArrayList<People>();
+		
+		conn = OracleConnection.getConnection();
+		stmt = conn.prepareStatement(query);
+		stmt.setString(1, VALUE);
+		
+		result = stmt.executeQuery();
+		
+		while(result.next()) {
+			People people = new People();
+			people.setPEOPLE_ID(result.getInt(1));
+			people.setFIRST_NAME(result.getString(2));
+			people.setLAST_NAME(result.getString(3));
+			people.setCOMPANY_NAME(result.getString(4));
+			people.setADDRESS(result.getString(5));
+			people.setCITY(result.getString(6));
+			people.setCOUNTRY(result.getString(7));
+			people.setPEOPLE_STATE(result.getString(8));
+			people.setZIP(result.getFloat(9));
+			people.setPHONE(result.getString(10));
+			people.setEMAIL(result.getString(11));
+			peoples.add(people);
+		}	
+		return peoples;
+	}
+	
+	public List<People> getAllPeople() throws SQLException, ClassNotFoundException, IOException{
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result;
+		List<People> peoples = new ArrayList<People>();
+		
+		conn = OracleConnection.getConnection();
+		stmt = conn.prepareStatement(OracleQueries.ALLPEOPLE);
+		
+		result = stmt.executeQuery();
+		
+		while(result.next()) {
+			People people = new People();
+			people.setPEOPLE_ID(result.getInt(1));
+			people.setFIRST_NAME(result.getString(2));
+			people.setLAST_NAME(result.getString(3));
+			people.setCOMPANY_NAME(result.getString(4));
+			people.setADDRESS(result.getString(5));
+			people.setCITY(result.getString(6));
+			people.setCOUNTRY(result.getString(7));
+			people.setPEOPLE_STATE(result.getString(8));
+			people.setZIP(result.getFloat(9));
+			people.setPHONE(result.getString(10));
+			people.setEMAIL(result.getString(11));
+			peoples.add(people);
+		}	
+		return peoples;
+	}
+	
+	public List<People> getPeopleByV2(String value) throws SQLException, ClassNotFoundException, IOException{
+		List<People> allPeople = this.getAllPeople();
+		List<People> SubList = new ArrayList<People>();
+		allPeople.stream().filter((pz) -> pz.getCITY().equals(value)
+										|| pz.getCOUNTRY().equals(value)
+										|| pz.getLAST_NAME().equals(value))
+		.forEach((pz) -> SubList.add(pz));
+		return SubList;
+	}
+	
+	public Integer savePeople(People p) throws ClassNotFoundException, IOException, SQLException {
+		Integer people_id = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		String[] COL = {"PEOPLE_ID"};
+		
+		conn = OracleConnection.getConnection();
+		stmt = conn.prepareStatement(OracleQueries.SAVEPEOPLE, COL); 
+		stmt.setString(1, p.getFIRST_NAME());
+    	stmt.setString(2, p.getLAST_NAME());
+    	stmt.setString(3, p.getCOMPANY_NAME());
+    	stmt.setString(4, p.getADDRESS());
+    	stmt.setString(5, p.getCITY());
+    	stmt.setString(6, p.getCOUNTRY());
+    	stmt.setString(7, p.getPEOPLE_STATE());
+    	stmt.setFloat(8, p.getZIP());
+    	stmt.setString(9, p.getPHONE());
+    	stmt.setString(10, p.getEMAIL());
+    	
+		stmt.executeUpdate();
+		result = stmt.getGeneratedKeys();
+		if(result != null && result.next()) {
+			people_id = result.getInt(1);
+		}
+		return people_id;
+	}
+	
+	public Integer updatePeople(People p) throws ClassNotFoundException, IOException, SQLException {
+		Integer people_id = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		String[] COL = {"PEOPLE_ID"};
+		
+		conn = OracleConnection.getConnection();
+		stmt = conn.prepareStatement(OracleQueries.UPDATEPEOPLE, COL); 
+		stmt.setString(1, p.getFIRST_NAME());
+    	stmt.setString(2, p.getLAST_NAME());
+    	stmt.setString(3, p.getCOMPANY_NAME());
+    	stmt.setString(4, p.getADDRESS());
+    	stmt.setString(5, p.getCITY());
+    	stmt.setString(6, p.getCOUNTRY());
+    	stmt.setString(7, p.getPEOPLE_STATE());
+    	stmt.setFloat(8, p.getZIP());
+    	stmt.setString(9, p.getPHONE());
+    	stmt.setString(10, p.getEMAIL());
+    	
+		stmt.executeUpdate();
+		result = stmt.getGeneratedKeys();
+		if(result != null && result.next()) {
+			people_id = result.getInt(1);
+		}
+		return people_id;
+	}
+	
+	public void deletePeople(Integer people_id) throws ClassNotFoundException, IOException, SQLException {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		conn = OracleConnection.getConnection();
+		stmt = conn.prepareStatement(OracleQueries.DELETEPEOPLE);
+		stmt.setInt(1, people_id);
+		
+		stmt.executeUpdate();
+	}
+}
+
+

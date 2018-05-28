@@ -1,0 +1,13 @@
+import people.dao.PeopleDAO;
+
+public class PeopleDAOTest {
+	PeopleDAO pDAO;
+	Boolean isSave;
+	Integer idToDelete;
+	
+	@Before
+	public void testPrep() {
+		pDAO = new PeopleDAO();
+		isSave = false;
+	}
+}

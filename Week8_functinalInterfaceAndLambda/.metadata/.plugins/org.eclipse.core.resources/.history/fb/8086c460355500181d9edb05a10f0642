@@ -1,0 +1,32 @@
+package people.MainEntry;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import people.dao.PeopleDAO;
+import people.model.People;
+
+public class MainEntry {
+	public static void main(String[] args) throws SQLException {
+		MainEntry mainObj = new MainEntry();
+		
+		People people = null;
+		PeopleDAO peopleDAO= new PeopleDAO();
+		List<People> ppl = new ArrayList<>();
+		
+		people = peopleDAO.getPeopleByID(10);
+		
+		System.out.println(people.getPEOPLE_ID());
+		System.out.println(people.getFIRST_NAME());
+		System.out.println(people.getLAST_NAME());
+		
+		ppl = peopleDAO.getPeopleByCountry("New York");
+		
+		for (People person : ppl) {
+			System.out.print(person.getPEOPLE_ID() + " ");
+			System.out.print(person.getFIRST_NAME() + " ");
+			System.out.print(person.getLAST_NAME() + " ");
+		}
+	}
+}

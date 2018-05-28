@@ -1,0 +1,13 @@
+INDEX VERSION 1.4+C:\Users\Students\Desktop\percholas_sayaka\Week10\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2453282812.index
+2768594759.index
+4106126909.index
+666137705.index
+803565185.index
+2975396541.index
+673686323.index
+2614612456.index
+2368478578.index
+404625956.index
+3533946799.index
+3174975275.index

@@ -1,0 +1,103 @@
+<html>
+<head>
+	<title>CSS Selectors</title>
+	<style>
+		body {
+			background-color: burlywood;
+			color: navy;
+		}
+		
+		h1, h2 {
+			text-align: center;
+		}
+
+		#thesis {
+			font-weight:600;
+			font-style: italic;
+			color: green;
+			margin: 20px 2em;
+			border: solid 2px navy;
+			padding:1em;
+		}
+
+		.class {
+			font-family: 'comic sans ms';
+			font-style: italic;
+		}
+		.more {
+			text-decoration: underline;
+		}
+
+		a {
+			color: yellow;
+		}
+
+		a:hover {
+			color: cyan;
+		}
+
+		a:visited {
+			color: red;
+		}
+
+		.groupbox {
+			border: double red 4px;
+			margin: 1em 0;
+			padding: 1em;
+			position: relative;
+			width: 80%;
+		}
+		div[class="groupbox"] div:first-child {
+			display: inline-block;
+			margin: 0 4px 0 2px;
+			position: relative;
+			top: -1.7em;
+			background-color: burlywood;
+		}
+		div[class="groupbox"] div:nth-child(2) {
+			position: absolute;
+			top: 0.75em;
+			left: 0.5em;
+			color: blue;
+			font-size: 0.8em;
+		}
+
+		input:disabled+label {
+			opacity: 0.4;
+		}
+
+		p::first-letter {
+			font-size:2em;
+		}
+
+</style>
+	</head>
+	<body>
+
+		<h1>This is important!</h1>
+		<h2>This is almost as important!</h2>
+
+		<p id="thesis">Green eggs and ham is superior to spam but not as delightful to eat.</p>
+
+		<p><span class="class">I've got class!</span>......<span class="class more">I've got more class!</span></p>
+
+		<a href="https://en.wikipedia.org/wiki/Green_Eggs_and_Ham" target="_blank">Visit Me!</a>
+
+		<div class="groupbox">
+			<div>I'm the header</div>
+			<div>I'm the content.  In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.</div>
+		</div>
+
+		<form>
+			<input type="checkbox" id="cb1">
+			<label for="cb1">Enabled</label>&nbsp;&nbsp;
+			<input type="checkbox" id="cb2" disabled>
+			<label for="cb2">Disabled</label>
+		</form>
+
+		<p>
+			Bling is the art of owning everything.
+		<p>
+
+	</body>
+</html>

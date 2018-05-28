@@ -1,0 +1,55 @@
+import java.io.IOException;
+import java.sql.SQLException;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import people.dao.PeopleDAO;
+import people.model.People;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+public class PeopleDAOTest {
+	PeopleDAO pDAO;
+	Boolean isSave;
+	Integer idToDelete;
+	
+	People ppl;
+	
+	@Before
+	public void testPrep() {
+		pDAO = new PeopleDAO();
+		isSave = false;
+		idToDelete = null;
+		ppl = new People();
+		ppl.setFIRST_NAME("Sayaka");
+		ppl.setLAST_NAME("Tamura");
+		ppl.setCOMPANY_NAME("PerScholas");
+		ppl.setADDRESS("Broadway 930 NewYork");
+		ppl.setCITY("New York");
+		ppl.setCOUNTRY("New York");
+		ppl.setPEOPLE_STATE("NY");
+		ppl.setZIP((float) 10001);
+		ppl.setPHONE("917-333-6666");
+		ppl.setEMAIL("sayaka@gmail.com");
+	} 
+	
+	@Test
+	public void savePeopleTest() throws ClassNotFoundException, IOException, SQLException {
+		idToDelete = pDAO.savePeople(ppl);
+		People actualPeople = pDAO.getPeopleByID(idToDelete);
+		
+		assertThat(actualPeople, not(equalTo(null)));
+		assertThat(ppl.getFIRST_NAME(), equalTo(actualPeople.getFIRST_NAME()));
+		isSave = true;
+	}
+	
+	@After
+	public void cleanUpTest() throws ClassNotFoundException, IOException, SQLException {
+		if(isSave) {
+			pDAO.deletePeople(idToDelete);
+		}
+	}
+}

@@ -1,0 +1,15 @@
+package people.model;
+
+public class People {
+	private Integer PEOPLE_ID;
+	private String FIRST_NAME;
+	private String LAST_NAME;
+	private String COMPANY_NAME;
+	private String ADDRESS;
+	private String CITY;
+	private String COUNTRY;
+	private String PEOPLE_STATE;
+	private float ZIP;
+	private Integer PHONE;
+	private String EMAIL;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Form Practice</title>
+	<link rel="stylesheet" href="form.css">
+	<script type="text/javascript">
+		function formatdate(date){
+			var d = new Date(date),
+			day = d.getDate(),
+			month ='' + (d.getMonth()+1),
+			year= d.getFullYear();
+
+			if(month.length<2) month = '0' + month;
+			if(day.length<2) day = '0' + day;
+
+			return[year, month, day].join('-');
+		}
+
+		function initPage(){
+			document.getElementById("startDate").value= formatdate(new Date());
+		}
+	</script>
+</head>
+<body onload="initPage()">
+	<h2>Employee Registration</h2>		
+	<div id="formwrapper">
+		<form method="post" id="form">
+			<div class="title">First name</div>
+			<input type="text" name="firstname" placeholder="Enter First name" required>
+			<div class="title">Last name</div>
+		  	<input type="text" name="lastname" placeholder="Last name" required>
+		  	<div class="title">Start Date</div>
+		  	<input type="date" id="startDate" placeholder="Start Date" required>
+
+		  	<div class="title titlet">Title</div>
+		  	<div class="radioB">
+		  		<input type="radio" name="title" value="President" required>President<br>
+				<input type="radio" name="title" value="VicePresident" required>Vice President<br>
+				<input type="radio" name="title" value="Treasurer" required>Treasurer<br>
+				<input type="radio" name="title" value="OperationsManager" required>Operations Manager<br>
+				<input type="radio" name="title" value="LoanManager" required>Loan Manager<br>
+				<input type="radio" name="title" value="HeadTeller" required>Head Teller<br>
+				<input type="radio" name="title" value="Teller" required>Teller<br>
+		  	</div>
+
+		  	<div class="title" id="brcn_ttl">Branch</div>
+		  	<input id="brnc_inpt" list="branches" name="branch" required>
+		  	<datalist id="branches">
+			  <option value="1">
+			  <option value="2">
+			  <option value="3">
+			  <option value="4">
+			</datalist>
+
+		  	<div class="title" id="dept_ttl">Department</div>
+		  	<input id="dpt_inpt" list="dpts" name="department" required>
+		  	<datalist id="dpts">
+			  <option value="1">
+			  <option value="2">
+			  <option value="3">
+			</datalist>
+
+		  	<div class="title" id="mng_ttl">Manager</div>
+		  	<input id="mng_inpt" list="mngs" name="manager" required>
+		  	<datalist id="mngs">
+			  <option value="EMPID #1: Michael Smith">
+			  <option value="EMPID #3: Robert Tyler">
+			  <option value="EMPID #4: Susan Hawthorne">
+			  <option value="EMPID #6: Helen Fleming">
+			  <option value="EMPID #10: Paula Roberts">
+			  <option value="EMPID #13: John Blake">
+			  <option value="EMPID #16: Theresa Markham">
+			</datalist>
+
+			<div class="btn">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

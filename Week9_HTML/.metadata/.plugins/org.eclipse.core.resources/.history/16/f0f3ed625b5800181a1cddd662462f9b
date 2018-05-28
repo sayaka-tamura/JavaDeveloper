@@ -1,0 +1,8 @@
+package util;
+
+public class OracleQueries {
+	
+    public final static String GETSTUDENTBYEMAIL = "SELECT * FROM STUDENT "
+            + "WHERE EMAIL = ?";
+        
+}

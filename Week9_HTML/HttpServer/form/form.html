@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Form Practice</title>
+	<link rel="stylesheet" href="form.css">
+	<script type="text/javascript">
+		function formatdate(date){
+			var d = new Date(date),
+			day = d.getDate(),
+			month ='' + (d.getMonth()+1),
+			year= d.getFullYear();
+
+			if(month.length<2) month = '0' + month;
+			if(day.length<2) day = '0' + day;
+
+			return[year, month, day].join('-');
+		}
+
+		function initPage(){
+			document.getElementById("startDate").value= formatdate(new Date());
+		}
+	</script>
+</head>
+<body onload="initPage()">
+	<h2>Employee Registration</h2>		
+	<div id="formwrapper">
+		<form method="post" id="form">
+			<div class="title">First name</div>
+			<input type="text" name="firstname" placeholder="Enter First name" required>
+			<div class="title">Last name</div>
+		  	<input type="text" name="lastname" placeholder="Last name" required>
+		  	<div class="title">Start Date</div>
+		  	<input type="date" id="startDate" placeholder="Start Date" required>
+
+		  	<div class="title titlet">Title</div>
+		  	<div class="radioB">
+		  		<input type="radio" name="title" value="President" required>President<br>
+				<input type="radio" name="title" value="VicePresident" required>Vice President<br>
+				<input type="radio" name="title" value="Treasurer" required>Treasurer<br>
+				<input type="radio" name="title" value="OperationsManager" required>Operations Manager<br>
+				<input type="radio" name="title" value="LoanManager" required>Loan Manager<br>
+				<input type="radio" name="title" value="HeadTeller" required>Head Teller<br>
+				<input type="radio" name="title" value="Teller" required>Teller<br>
+		  	</div>
+
+		  	<div class="title" id="brcn_ttl">Branch</div>
+		  	<select id="brnc_inpt" name="branch" required>
+		  	  <option value=""> --- Choose Branch --- </option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			</select>
+
+		  	<div class="title" id="dept_ttl">Department</div>
+		  	<select id="dpt_inpt" name="department" required>
+		  	  <option value=""> --- Choose Department --- </option>
+			  <option value="1">1</option>
+			  <option value="2">2</option>
+			  <option value="3">3</option>
+			</select>
+
+		  	<div class="title" id="mng_ttl">Manager</div>
+		  	<select id="mng_inpt" name="manager" required>
+		  	  <option value=""> --- Choose a Manager --- </option>
+		  	  <option value="None">None</option>
+			  <option value="MichaelSmith">EMPID #1: Michael Smith</option>
+			  <option value="RobertTyler">EMPID #3: Robert Tyler</option>
+			  <option value="SusanHawthorne">EMPID #4: Susan Hawthorne</option>
+			  <option value="HelenFleming">EMPID #6: Helen Fleming</option>
+			  <option value="PaulaRoberts">EMPID #10: Paula Roberts</option>
+			  <option value="JohnBlake">EMPID #13: John Blake</option>
+			  <option value="TheresaMarkham">EMPID #16: Theresa Markham</option>
+			</select>
+
+			<div class="btn">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

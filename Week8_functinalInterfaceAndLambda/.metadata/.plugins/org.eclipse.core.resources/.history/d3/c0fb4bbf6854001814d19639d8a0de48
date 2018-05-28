@@ -1,0 +1,18 @@
+package simpleThreadPack;
+
+public class NonSync implements Runnable{
+	private static Integer num = 0;
+	public static void main(String[] args) {
+		
+	}
+	@Override
+	public void run() {
+		while(num > 20)
+		{
+			System.out.println(Thread.currentThread().getName() + " Reading " + num);
+			num++;
+			System.out.println(Thread.currentThread().getName() + " Next Value " + num);
+		}
+		
+	}
+}

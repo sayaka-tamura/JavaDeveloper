@@ -1,0 +1,10 @@
+package people.utils;
+
+public class OracleQueries {
+  public final static String GETAllSHOPPINGIDByUSER = "SELECT s.SHOPPING_ID, i.ITEM_DATE, i.ITEM_NAME, i.ITEM_QUANTITIY, s.SHOPPING_TAX, s.SHOPPING_TOTAL_EXPENSE "
+	+ "FROM SHOPPING_F s "
+	+ "LEFT OUTER JOIN ITEM_F i "
+	+ "ON s.SHOPPING_ITEM_ID = i.ITEM_ID ";
+  
+        
+}

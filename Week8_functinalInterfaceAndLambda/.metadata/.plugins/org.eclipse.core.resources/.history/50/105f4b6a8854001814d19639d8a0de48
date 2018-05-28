@@ -1,0 +1,40 @@
+package CoreJava.MainEntryPoint;
+
+import java.util.Scanner;
+
+import CoreJava.DAO.ShoppingDAO;
+import CoreJava.Models.Shopping;
+
+public class MainEntryClass {
+	public static void main(String[] args) {
+		
+		boolean quit = false;
+		Scanner in = new Scanner(System.in);
+		int choice = -1;
+		
+		MainEntryClass mainObj = new MainEntryClass();
+		
+		Shopping shop;
+		ShoppingDAO shopDAO = null;
+		
+		while(!quit) {
+			System.out.println("What would you like to do? \n"
+					+ "1. Show all shopping history\n"
+					+ "2. Quit");
+			if(choice == 1) {
+				shopDAO = new ShoppingDAO();
+				boolean logout = false;
+				
+				while(!logout) {
+					
+				}
+				
+			} else if (choice == 2) {
+				quit = true;
+				System.out.println("Bye!");
+			}
+			
+		}
+		
+	}
+}

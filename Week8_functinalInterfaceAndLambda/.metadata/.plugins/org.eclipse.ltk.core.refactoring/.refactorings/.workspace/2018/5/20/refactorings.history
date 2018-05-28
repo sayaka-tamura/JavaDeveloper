@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;W7_HW_CoreJavaJDBC&apos;" deleteContents="false" description="Delete resource &apos;W7_HW_CoreJavaJDBC&apos;" element1="/W7_HW_CoreJavaJDBC" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1526266007906"/>
+</session>

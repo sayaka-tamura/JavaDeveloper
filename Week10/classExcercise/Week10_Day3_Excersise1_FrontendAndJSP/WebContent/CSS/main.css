@@ -1,0 +1,33 @@
+body, html{height:100%;}
+
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#main-header
+{
+	background-color: blue; 
+	height=20%;
+}
+
+#content
+{
+	background-color:gray;
+	height:70%;
+	text-align: center;
+}
+
+#main-footer
+{
+	height:8%; 
+	bottom:0; 
+	position:relative;
+}

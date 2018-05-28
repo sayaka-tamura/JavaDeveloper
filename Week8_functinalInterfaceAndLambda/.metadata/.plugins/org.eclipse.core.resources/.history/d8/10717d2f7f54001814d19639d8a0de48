@@ -1,0 +1,16 @@
+package DAO;
+
+import java.util.List;
+
+import Models.Shopping;
+import SystemInterfaces.ShoppingDAOI;
+
+public class ShoppingDAO implements ShoppingDAOI {
+
+	@Override
+	public List<Shopping> getAllShoppingIDByUser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

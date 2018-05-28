@@ -1,0 +1,17 @@
+package people.MainEntry;
+
+import java.sql.SQLException;
+
+import people.dao.PeopleDAO;
+import people.model.People;
+
+public class MainEntry {
+	public static void main(String[] args) throws SQLException {
+		People people = null;
+		PeopleDAO peopleDAO= null;
+		
+		people = peopleDAO.getPeopleByID(10);
+		
+		
+	}
+}

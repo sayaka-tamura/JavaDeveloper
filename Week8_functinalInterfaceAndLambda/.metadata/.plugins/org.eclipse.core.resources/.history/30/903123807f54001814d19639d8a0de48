@@ -1,0 +1,9 @@
+package SystemInterfaces;
+
+import java.util.List;
+
+import Models.Shopping;
+
+public interface ShoppingDAOI {
+	List<Shopping> getAllShoppingIDByUser();
+}

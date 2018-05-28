@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise\Week10_Day1_Excersise1_JSPSample"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\Servers"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise\Week10_Day2_Excersise1"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise\Week10_Day3_Excersise1_FrontendAndJSP"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise\Week10_Day4_Excersise1_scope"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise\Week10_Day4_Excersise2_Beans"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise\Week10_Day1_Excersise1"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10\classExcercise"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10_JSP"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week7_JDBC+Junit"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week7_JDBC+Junit\W7_HW_CoreJavaJDBC_SchoolManagement"/>
+		<item value="C:\Users\Students\Desktop\percholas_sayaka\Week10"/>
+	</list>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.jst.servlet.ui.project.facet.WebProjectWizard" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.wst.web.ui"/>
+		</list>
+	</section>
+</section>

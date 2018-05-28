@@ -1,0 +1,14 @@
+package people.MainEntry;
+
+import people.dao.PeopleDAO;
+import people.model.People;
+
+public class MainEntry {
+	public static void main(String[] args) {
+		People people = null;
+		PeopleDAO peopleDAO= null;
+		
+		
+		
+	}
+}

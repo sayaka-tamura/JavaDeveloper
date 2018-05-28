@@ -1,0 +1,16 @@
+package CoreJava.DAO;
+
+import java.util.List;
+
+import CoreJava.Models.Shopping;
+import CoreJava.SystemInterfaces.ShoppingDAOI;
+
+public class ShoppingDAO implements ShoppingDAOI {
+
+	@Override
+	public List<Shopping> getAllShoppingIDByUser() {
+		
+		return null;
+	}
+
+}

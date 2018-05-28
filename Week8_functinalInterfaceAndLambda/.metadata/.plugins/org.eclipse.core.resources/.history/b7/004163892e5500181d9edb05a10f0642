@@ -1,0 +1,62 @@
+package people.dao;
+
+import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import people.model.People;
+
+public class PeopleDAO {
+	public People getPeopleByID(Integer people_id) {
+		People people = null;
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet result = null;
+		
+		try {
+			conn = OracleConneciton.getConnection();
+			stmt = conn.prepareStatement(OracleQueries.GETPEOPLEBYID);
+			stmt.setString(1, people_id);
+			result = stmt.executeQuery();
+			
+			if(result.next()) {
+				people = new People();
+				people.setPEOPLE_ID(result.getInt(1));
+				people.setFIRST_NAME(result.getString(2));
+				people.setLAST_NAME(result.getString(3));
+				people.setCOMPANY_NAME(result.getString(4));
+				people.setADDRESS(result.getString(5));
+				people.setCITY(result.getString(6));
+				people.setCOUNTRY(result.getString(7));
+				people.setPEOPLE_STATE(result.getString(8));
+				people.setZIP(result.getFloat(9));
+				people.setPHONE(result.getString(10));
+				people.setEMAIL(result.getString(11));
+			}
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			result.close();
+			if(stmt != null) {
+				stmt.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+		}
+		return people;
+	}
+}
+
+//EMAIL
+
+//getPeopleByCountry()
+//getPeopleByCity()
+//getPeopleByLastname()
+//getPeopleByID()
+//deletePeople()
+//addPeople()
+//updatePeople()
+//ListOfAllPeople()
+

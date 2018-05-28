@@ -1,0 +1,11 @@
+package CoreJava.SystemInterfaces;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import CoreJava.Models.Shopping;
+
+public interface ShoppingDAOI {
+	List<Shopping> getAllShoppingIDByUser() throws SQLException;
+	
+}

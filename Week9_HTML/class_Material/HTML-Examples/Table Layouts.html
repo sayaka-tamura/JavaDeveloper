@@ -1,0 +1,197 @@
+<html>
+	<style>
+		body {
+			background-color: navy;
+			color: white;
+			font-family: "arial"
+		}
+		table {
+			width:60%;
+			margin: 0 auto;
+			border: ridge 6px red;
+			padding: 6px;
+			border-collapse: collapse;
+			font-size: 1.4em;
+			color: #000;
+		}
+		caption {
+			color: white;
+
+		}
+		th {
+			border: solid 1px red;
+			border-bottom: solid 2px red;
+		}
+		td {
+			border: solid 1px red;
+			padding: 4px;
+			text-align: center;
+		}
+		tr {
+			background-color: #fff;
+		}
+		tr:nth-child(2n) {
+			background-color: #bbb;
+		}
+		tr:last-child td {
+			border-bottom: none;
+		}
+		.merge {
+			margin-bottom: 0.5em;
+		}
+		.merge caption {
+			margin-bottom: 0.5em;
+		}
+		.merge td {
+			background-color: yellow;
+			height: 30px;
+			color: white;
+			max-width:26px;
+			width:26px;
+			font-size: 0.85em;
+		}
+		.rot {
+			display: block;
+			transform: rotate(270deg);
+			margin-bottom:-30px;
+		}
+	</style>
+	<body>
+		<table style="width:40%">
+			<caption>A Simple HTML Table</caption>
+			<tr>
+				<th>Row #</th><th>Column A</th><th>Column B</th><th>Column C</th>
+			</tr>
+			<tr>
+				<td>Row 1</td><td>Cell 1A</td><td>Cell 1B</td><td>Cell 1C</td>
+			</tr>
+			<tr>
+				<td>Row 2</td><td>Cell 2A</td><td>Cell 2B</td><td>Cell 2C</td>
+			</tr>
+			<tr>
+				<td>Row 3</td><td>Cell 3A</td><td>Cell 3B</td><td>Cell 3C</td>
+			</tr>
+		</table>
+		<hr/>
+		<table class="merge">
+			<caption>Merging Cells</caption>
+			<tr>
+				<td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/><td style="background-color: red" colspan="9">
+					colspan="9"
+				</td><td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/>
+				<td rowspan="5" style="background-color: blue">
+					<span class="rot">rowspan="5"</span>
+				</td>
+				<td/>
+				<td rowspan="5" style="background-color: blue">
+					<span class="rot">rowspan="5"</span>
+				</td>
+				<td/>
+				<td rowspan="5" style="background-color: blue">
+					<span class="rot">rowspan="5"</span>
+				</td>
+				<td/>
+				<td rowspan="5" style="background-color: blue">
+					<span class="rot">rowspan="5"</span>
+				</td>
+				<td/>
+				<td rowspan="5" style="background-color: blue">
+					<span class="rot">rowspan="5"</span>
+				</td>
+				<td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/>
+			</tr>
+			<tr>
+				<td/><td style="background-color: red" colspan="9">
+					colspan="9"
+				</td><td/>
+			</tr>
+			<tr>
+				<td/><td/><td/><td/><td/><td/><td/><td/><td/><td/><td/>
+			</tr>
+		</table>
+		<hr/>
+		<table>
+			<caption>Statistical Distributions</caption>
+			<tr>
+				<th>Distribution</th>
+				<th>Distribution Function</th>
+				<th>Density Function</th>
+				<th>Mean</th>
+				<th>Median</th>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Arcsine_distribution" target="_blank">Arcsine</a></td>
+				<td><img src="imgs/arcsine-dist-eqn.svg"/></td>
+				<td><img src="imgs/arcsine-pdf.svg"/></td>
+				<td>1&frasl;2</td>
+				<td>1&fasl;2</td>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Cauchy_distribution" target="_blank">Cauchy</a></td>
+				<td><img src="imgs/cauchy-pdf.svg"/></td>
+				<td><img src="imgs/cauchy-cdf.svg"/></td>
+				<td>undefined</td>
+				<td><i>x<sub>0</sub></i></td>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Normal_distribution" target="_blank">Gaussian</a></td>
+				<td><img src="imgs/gaussian-pdf.svg"/></td>
+				<td><img src="imgs/gaussian-cdf.svg"/></td>
+				<td>&mu;</td>
+				<td>&mu;</td>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Logit-normal_distribution" target="_blank">Logit-normal</a></td>
+				<td><img src="imgs/logit-normal-pdf.svg"/></td>
+				<td><img src="imgs/logit-normal-cdf.svg"/></td>
+				<td>no analytical solution</td>
+				<td><img src="imgs/logit-normal-median.svg"/></td>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Poisson_distribution" target="_blank">Poisson</a></td>
+				<td><img src="imgs/poisson-pmf.svg"/></td>
+				<td><img src="imgs/poisson-cdf.svg"/></td>
+				<td>&lambda;</td>
+				<td><img src="imgs/poisson-median.svg"/></td>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Rayleigh_distribution" target="_blank">Rayleigh</a></td>
+				<td><img src="imgs/rayleigh-pdf.svg"/></td>
+				<td><img src="imgs/rayleigh-cdf.svg"/></td>
+				<td><img src="imgs/rayleigh-mean.svg"/></td>
+				<td><img src="imgs/rayleigh-median.svg"/></td>
+			</tr>
+			<tr>
+				<td><a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)" target="_blank">Uniform Continuous</a></td>
+				<td><img src="imgs/uniform-dist-pdf.svg"/></td>
+				<td><img src="imgs/uniform-dist-cdf.svg"/></td>
+				<td><img src="imgs/uniform-dist-mean.svg"/></td>
+				<td><img src="imgs/uniform-dist-mean.svg"/></td>
+			</tr>
+		</table>
+	</body>	
+</html>

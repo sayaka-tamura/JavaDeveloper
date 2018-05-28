@@ -1,0 +1,35 @@
+#header-wrapper{
+    background-color: olive;
+    text-align: center;
+    height: 100%;
+}
+
+#header-title-block{
+    display: inline-block;
+    height: 6vw;
+    margin-bottom: 2rem;
+}
+
+#header-logo{
+	height: 6vw;
+}
+
+#header-title
+{
+    font-size: 4vw;
+    font-family: Helvetica, Sans-serif;
+    font-weight: 700;
+    float: left;
+    padding: 1vw 0;
+}
+
+#nav-wrapper ul{
+	list-style: none; 
+	display: flex; 
+	justify-content: space-around; 
+	font-size:1.5rem; 
+	font-weight:700; 
+	margin-left: -40px;
+	padding: 20px 0;
+	margin: 0;
+}

@@ -1,0 +1,25 @@
+table{
+	width:200px;
+	height:200px;
+	background-color: LightGray;
+	margin: 10% auto;
+	border-collapse:collapse;
+}
+
+td{border: solid 1px black;}
+
+.column{
+	font-family: Arial;
+	font-size: 3.4em;
+}
+
+.X{padding-left: 10%;}
+
+.O
+{ 
+	width:70%;
+	height:70%;
+	border-radius: 75%;
+	margin:15%;
+	border: solid 3px black;
+}

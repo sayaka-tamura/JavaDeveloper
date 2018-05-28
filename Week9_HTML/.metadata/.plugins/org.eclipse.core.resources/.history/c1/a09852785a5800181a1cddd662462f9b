@@ -1,0 +1,54 @@
+package Main;
+
+public class Runner {
+	public static void main(String[] args) {
+		
+	}
+}
+
+
+{
+	class Program
+	{
+		#region Consts
+		const string ConnectionString = "server=localhost;user id=root;password=abcd;database=banking;SslMode=none";
+		#endregion
+		static void Main(string[] args)
+		{
+			MySqlConnection connection = new MySqlConnection(ConnectionString);
+			string html = ExportTableToHtml(connection, "employee");
+			File.WriteAllText("employee.html", html);
+		}
+
+		static string ExportTableToHtml(IDbConnection connection, string tableName)
+		{
+			connection.Open();
+			IDbCommand command = connection.CreateCommand();
+			command.CommandText = $"select * from {tableName}";
+			IDataReader reader = command.ExecuteReader();
+			XElement table = new XElement("table");
+			while (reader.Read())
+			{
+				XElement row = new XElement("tr");
+				for(int nField=0;nField<reader.FieldCount;++nField)
+				{
+					XElement cell = new XElement("td");
+					object value = reader[nField];
+					if (value != DBNull.Value)
+					{
+						if (value.GetType().Name == "DateTime")
+						{
+							DateTime date = (DateTime)value;
+							value = date.ToLongDateString();
+						}
+						cell.Add(value);
+					}
+					row.Add(cell);
+				}
+				table.Add(row);
+			}
+			connection.Close();
+			return table.ToString();
+		}
+	}
+}

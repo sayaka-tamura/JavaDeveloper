@@ -1,0 +1,99 @@
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import people.dao.PeopleDAO;
+import people.model.People;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+public class PeopleDAOTest {
+	PeopleDAO pDAO;
+	Boolean isSave;
+	Integer idToDelete;
+	
+	People ppl;
+	People ppl2;
+	People ppl3;
+	List<People> peopleL = new ArrayList<People>();
+	List<People> subActualList = new ArrayList<People>();
+	
+	@Before
+	public void testPrep() {
+		pDAO = new PeopleDAO();
+		isSave = false;
+		idToDelete = null;
+		ppl = new People();
+		ppl.setFIRST_NAME("Sayaka");
+		ppl.setLAST_NAME("Tamura");
+		ppl.setCOMPANY_NAME("PerScholas");
+		ppl.setADDRESS("Broadway 930 NewYork");
+		ppl.setCITY("New York");
+		ppl.setCOUNTRY("New York");
+		ppl.setPEOPLE_STATE("NY");
+		ppl.setZIP((float) 10001);
+		ppl.setPHONE("917-333-6666");
+		ppl.setEMAIL("sayaka@gmail.com");
+		peopleL.add(ppl);
+		
+		ppl2 = new People();
+		ppl2.setFIRST_NAME("Kris");
+		ppl2.setLAST_NAME("Marrier");
+		ppl2.setCOMPANY_NAME("King, Christopher A Esq");
+		ppl2.setADDRESS("228 Runamuck Pl #2808");
+		ppl2.setCITY("Baltimore");
+		ppl2.setCOUNTRY("Baltimore");
+		ppl2.setPEOPLE_STATE("MD");
+		ppl2.setZIP((float) 21224);
+		ppl2.setPHONE("410-655-8723");
+		ppl2.setEMAIL("kris@gmail.com");
+		peopleL.add(ppl2);
+		
+		ppl3 = new People();
+		ppl3.setFIRST_NAME("Portia");
+		ppl3.setLAST_NAME("Stimmel");
+		ppl3.setCOMPANY_NAME("Peace Christian Center");
+		ppl3.setADDRESS("3732 Sherman Ave");
+		ppl3.setCITY("Bridgewater");
+		ppl3.setCOUNTRY("Somerset");
+		ppl3.setPEOPLE_STATE("NJ");
+		ppl3.setZIP((float) 8807);
+		ppl3.setPHONE("908-722-7128");
+		ppl3.setEMAIL("portia.stimmel@aol.com");
+		peopleL.add(ppl3);
+
+	} 
+	
+	@Test
+	public void savePeopleTest() throws ClassNotFoundException, IOException, SQLException {
+		idToDelete = pDAO.savePeople(ppl);
+		People actualPeople = pDAO.getPeopleByID(idToDelete);
+		
+		assertThat(actualPeople, not(equalTo(null)));
+		assertThat(ppl.getFIRST_NAME(), equalTo(actualPeople.getFIRST_NAME()));
+		isSave = true;
+		
+//		List<People> actualList = pDAO.getAllPeople();
+//		subActualList.add(pDAO.getPeopleByID(502));
+//		subActualList.add(pDAO.getPeopleByID(10));
+//		subActualList.add(pDAO.getPeopleByID(250));
+//		
+//		for (int i = 0; i < 3; i++) {
+//			assertThat(actualPeople, not(equalTo(null)));
+//			assertThat(subActualList.get(i).getFIRST_NAME(), equalTo(actualList.get(i).getFIRST_NAME()));
+//		}
+	}
+	
+	@After
+	public void cleanUpTest() throws ClassNotFoundException, IOException, SQLException {
+		if(isSave) {
+			pDAO.deletePeople(idToDelete);
+		}
+	}
+}

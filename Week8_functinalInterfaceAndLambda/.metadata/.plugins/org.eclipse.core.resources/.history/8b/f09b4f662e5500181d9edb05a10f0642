@@ -1,0 +1,12 @@
+package people.dao;
+
+public class PeopleDAO {
+	getPeopleByCountry()
+	getPeopleByCity()
+	getPeopleByLastname()
+	getPeopleByID()
+	deletePeople()
+	addPeople()
+	updatePeople()
+	ListOfAllPeople()
+}

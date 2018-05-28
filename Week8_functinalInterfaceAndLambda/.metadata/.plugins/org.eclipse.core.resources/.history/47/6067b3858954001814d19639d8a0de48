@@ -1,0 +1,52 @@
+package CoreJava.MainEntryPoint;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
+
+import CoreJava.DAO.ShoppingDAO;
+import CoreJava.Models.Shopping;
+
+public class MainEntryClass {
+	public static void main(String[] args) throws SQLException {
+		
+		boolean quit = false;
+		Scanner in = new Scanner(System.in);
+		int choice = -1;
+		
+		MainEntryClass mainObj = new MainEntryClass();
+		
+		Shopping shop;
+		ShoppingDAO shopDAO = null;
+		
+		while(!quit) {
+			System.out.println("What would you like to do? \n"
+					+ "1. Show all shopping history\n"
+					+ "2. Quit");
+			choice = in.nextInt();
+			if(choice == 1) {
+				shopDAO = new ShoppingDAO();
+				
+				List<Shopping> shopList = shopDAO.getAllShoppingIDByUser();
+				mainObj.allShopping(shopList);
+				
+			} else if (choice == 2) {
+				quit = true;
+				System.out.println("Bye!");
+			}
+			
+		}
+		
+	}
+	// --- End main ---
+	
+    public void allShopping(List<Shopping> shopList) {
+        System.out.printf("\nAll Shopping:\n");
+        System.out.printf("DATE \t ITEM NAME \t SHOPPING_TAX, \t TOTAL_EXPENSE\n");
+        for(Shopping shop : shopList) {
+            System.out.printf("%-20s %20s %.2f %.2f\n", shop.getShopping_date(), shop.getItem_name(), shop.getTax(), shop.getTotal_expense());
+        }
+    }
+}

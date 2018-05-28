@@ -1,0 +1,152 @@
+package mainEntry;
+
+import dao.OrderDAO;
+import dao.ItemDAO;
+import model.Order;
+import model.Item;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Main_Entry {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, IOException {
+        ItemDAO iDAO = new ItemDAO();
+        OrderDAO oDAO = new OrderDAO();
+
+        Scanner in = new Scanner(System.in);
+
+        Integer choice = 0;
+        
+        Map<Integer, Integer> order = new HashMap<Integer, Integer>();
+    	Map<Integer, Item> hm = new HashMap<Integer, Item>();
+    	       	
+    	List<Item> itemsInStock = iDAO.getItemsInStock();
+		for (Item item: itemsInStock) {
+			hm.put(item.getItem_id(), item);
+		}
+        
+        while(choice != 6){
+            printMenu();
+            choice = in.nextInt();
+            in.nextLine();
+
+            switch(choice){
+                case 1:
+                	displayCart(order, hm);
+                    break;
+                case 2:
+                	addItemToCart(itemsInStock, order);
+    				itemsInStock = iDAO.getItemsInStock();
+    				for (Item i: itemsInStock) {
+    					hm.put(i.getItem_id(), i);
+    				}
+    				displayCart(order, hm);
+    				break;
+                case 3:	                	
+            		if (oDAO.createOrder(order)) {
+            			System.out.println("Order Created.");
+            		} else {
+            			System.out.println("Order was not created.");
+            		}            		
+            		
+            		for (Map.Entry<Integer, Integer> entry: order.entrySet()) {
+            			if (iDAO.updateQuantityInStock(entry.getKey(), entry.getValue())) {
+            				System.out.println("Item updated.");
+            			} else {
+            				System.out.println("Item was not updated.");
+            			}
+            		}
+
+//                case 2:
+//                    item = new Item();
+//                    System.out.println("What is the name of new item?");
+//                    item.setItem_name(in.nextLine());
+//                    System.out.println("How many items?");
+//                    item.setItem_quantity_in_stock(in.nextInt());
+//                    System.out.println("How much is the item per item?");
+//                    item.setItem_price(in.nextDouble());
+//                    isRegister = iDAO.addItem(item);
+//
+//                    if (isRegister != null) {
+//                        System.out.println("The item have successfully added");
+//                    } else {
+//                        System.out.println("Invalid Inputs, Try Again");
+//                    }
+//                    break;
+//                case 3:
+//                    System.out.println("Type Item_id you want to delete");
+//                    int i_id = in.nextInt();
+//                    iDAO.removeItemById(i_id);
+//                    break;
+//                case 4:
+//                    System.out.println("Type Customer_id you want to search");
+//                    int c_id = in.nextInt();
+//                    customer = cDAO.getCustomerById(c_id);
+//                    System.out.println("Customer ID: " + customer.getCustomer_id());
+//                    System.out.println("Customer E-mail: " + customer.getCustomer_email());
+//                    System.out.println("Customer First Name: " + customer.getCustomer_fname());
+//                    System.out.println("Customer Last Name: " + customer.getCustomer_lname());
+//                    break;
+//                case 5:
+//                    customer = new Customer();
+//                    System.out.println("Type E-mail for New Customer");
+//                    customer.setCustomer_email(in.nextLine());
+//                    System.out.println("Type First Name for New Customer");
+//                    customer.setCustomer_fname(in.nextLine());
+//                    System.out.println("Type Last Name for New Customer");
+//                    customer.setCustomer_lname(in.nextLine());
+//                    isRegister = cDAO.addCustomer(customer);
+//
+//                    if (isRegister != null) {
+//                        System.out.println("The customer have successfully added");
+//                    } else {
+//                        System.out.println("Invalid Inputs, Try Again");
+//                    }
+//                    break;
+                case 6:
+                    System.out.println("Bye!");
+                    break;
+                default:
+                    System.out.println("Invalid Input \nPlease Enter a number between 1 - 4");
+            }
+        }
+        in.close();
+    }
+    
+    // Display cort
+	public static void displayCart(Map<Integer, Integer> order, Map<Integer, Item> hm) {
+		if (!order.isEmpty()) {
+			System.out.println("Here's what is inside of your cart: ");			
+			for (Map.Entry<Integer, Integer> entry: order.entrySet()) {
+				Item item = hm.get(entry.getKey());
+				String itemInformation = String.format("name: %s | amount inside cart: %s | price: $%.2f",
+						item.getItem_name(), 
+						entry.getValue(),
+						item.getItem_price());
+				System.out.println(itemInformation);
+			}
+		} else {
+			System.out.println("The cart is currently empty.\r\n");
+		}
+		System.out.println();
+	}
+
+	// Put cart system
+    public static void printMenu(){
+        System.out.println("\n========== Menu ============");
+        System.out.println("1: Show All Item");
+        System.out.println("2: Add(Buy) Item");
+        System.out.println("3: Check Out");	//->createOrder() -> updateQuantityInStock() 
+    }
+    
+    private static void addItemToCart(List<Item> itemsInStock, Map<Integer, Integer> order) {
+		// TODO Auto-generated method stub
+		
+	}
+    
+}

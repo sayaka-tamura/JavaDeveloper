@@ -1,0 +1,95 @@
+package Main;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import DAO.OracleConnection;
+import util.OracleQueries;
+
+public class Runner {
+	public static void main(String[] args) {
+		int ID = 0;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet result = null;
+        String selectAll = "SELECT * FROM STUDENT WHERE EMAIL = ?";
+        List<Attending> attendings = new ArrayList<Attending>();
+		
+		try {
+			conn = OracleConnection.getConnection();
+            stmt = conn.prepareStatement(selectAll);
+            stmt.setInt(1, student_id);
+            result = stmt.executeQuery();
+            
+            while(result != null && result.next()){
+            	attending = new Attending();
+            	attending.setCourse_name(result.getString(1));
+            	attending.setFull_name(result.getString(2));
+            	attending.setEmail(result.getString(3));
+            	
+            	attendings.add(attending);
+            }
+			
+		} catch (ClassNotFoundException | IOException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+            result.close();
+            if(stmt != null){
+                stmt.close();
+            }
+            if(conn != null){
+                conn.close();
+            }
+        }
+		
+		return attendings;	
+	}
+}
+
+
+
+	class Program
+	{
+		#region Consts
+		const string ConnectionString = "server=localhost;user id=root;password=abcd;database=banking;SslMode=none";
+		#endregion
+		static void Main(string[] args)
+		{
+			MySqlConnection connection = new MySqlConnection(ConnectionString);
+			string html = ExportTableToHtml(connection, "employee");
+			File.WriteAllText("employee.html", html);
+		}
+
+		static string ExportTableToHtml(IDbConnection connection, string tableName)
+		{
+			connection.Open();
+			IDbCommand command = connection.CreateCommand();
+			command.CommandText = $"select * from {tableName}";
+			IDataReader reader = command.ExecuteReader();
+			XElement table = new XElement("table");
+			while (reader.Read())
+			{
+				XElement row = new XElement("tr");
+				for(int nField=0;nField<reader.FieldCount;++nField)
+				{
+					XElement cell = new XElement("td");
+					object value = reader[nField];
+					if (value != DBNull.Value)
+					{
+						if (value.GetType().Name == "DateTime")
+						{
+							DateTime date = (DateTime)value;
+							value = date.ToLongDateString();
+						}
+						cell.Add(value);
+					}
+					row.Add(cell);
+				}
+				table.Add(row);
+			}
+			connection.Close();
+			return table.ToString();
+		}
+	}
+}

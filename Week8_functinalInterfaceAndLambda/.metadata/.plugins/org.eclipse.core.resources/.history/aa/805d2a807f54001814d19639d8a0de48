@@ -1,0 +1,39 @@
+/**
+ * author: Sayaka Tamura
+ * SQL: (Shopping Table: shopping_id, total_expense, tax, usr_id(fk), item_id(fk))
+ */
+
+package Models;
+
+public class Shopping {
+	private String shopping_date;
+	private String item_name;
+	private double tax;
+	private double total_expense;
+	
+	public String getShopping_date() {
+		return shopping_date;
+	}
+	public void setShopping_date(String shopping_date) {
+		this.shopping_date = shopping_date;
+	}
+	public String getItem_name() {
+		return item_name;
+	}
+	public void setItem_name(String item_name) {
+		this.item_name = item_name;
+	}
+	public double getTax() {
+		return tax;
+	}
+	public void setTax(double tax) {
+		this.tax = tax;
+	}
+	public double getTotal_expense() {
+		return total_expense;
+	}
+	public void setTotal_expense(double total_expense) {
+		this.total_expense = total_expense;
+	}
+	
+}
