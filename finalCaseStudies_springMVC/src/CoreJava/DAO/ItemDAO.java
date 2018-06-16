@@ -2,10 +2,10 @@ package CoreJava.DAO;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import springwork.model.Item;
@@ -19,11 +19,11 @@ public class ItemDAO {
         PreparedStatement stmt = null;
         ResultSet result = null;
         String[] COL = {"item_id"};
-        Timestamp dateTstamp = new java.sql.Timestamp((item.getItem_date()).getTime());
+        Date sqlItem_date = new java.sql.Date((item.getItem_date()).getTime());
         try{
             conn = OracleConnection.getConnection();
             stmt = conn.prepareStatement(OracleQueries.ADDSHOPPEDITEM, COL);
-            stmt.setTimestamp(1, dateTstamp);
+            stmt.setDate(1, sqlItem_date);
             stmt.setString(2, item.getItem_name());
             stmt.setDouble(3, item.getItem_price());
             stmt.setInt(4, item.getItem_quantity());
@@ -193,20 +193,21 @@ public class ItemDAO {
     }
 	
 	// Delete Item
-	public void deleteShoppedItem(Item item) throws SQLException {
+	public boolean deleteShoppedItem(int item_id) throws SQLException {
         Connection conn = null;
         PreparedStatement stmt = null;
-
+        boolean rslt = true;
         try{
             conn = OracleConnection.getConnection();
             stmt = conn.prepareStatement(OracleQueries.DELETEITEMBYID);
-            stmt.setInt(1, item.getItem_id());
+            stmt.setInt(1, item_id);
 
             int result = stmt.executeUpdate();
             if(result!=0) {
                 System.out.println("The Item has deleted successfully");
             } else {
                 System.out.println("Could not find the item, Try Again.");
+                rslt = false;
             }
         } catch (ClassNotFoundException | IOException | SQLException e){
             e.printStackTrace();
@@ -218,6 +219,8 @@ public class ItemDAO {
                 conn.close();
             }
         }
+        
+        return rslt;
     }
 	
 	/* --- Delete All Shopping Record ---*/

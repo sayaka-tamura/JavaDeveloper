@@ -53,6 +53,9 @@ public class OracleQueries {
 		/* --- Read --- */    
     public final static String GETUSERBYEMAILANDPASS = "SELECT * FROM USER_F "
             + "WHERE USER_EMAIL = ? AND USER_PASSWORD = ?";
+    
+    public final static String GETUSERBYITEMID = "SELECT * FROM USER_F WHERE USER_ID = ?";
+    
 		/* --- Update --- */
     public static final String UPDATEUSER = "UPDATE USER_F "
     		+ "SET USER_FNAME = ?, USER_LNAME = ?, USER_EMAIL = ?, USER_PASSWORD = ? "

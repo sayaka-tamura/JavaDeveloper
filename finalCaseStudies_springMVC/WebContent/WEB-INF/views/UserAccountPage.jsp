@@ -9,28 +9,36 @@
 	</head>
 	<body>
 		<div>User Account Page</div>
-		<%User u = (User)session.getAttribute("userkey"); %>
+		
+		<nav>
+			<a href="topPage_user">Home</a> |
+			<a href="IncomeExpense">Income / Expense</a> |
+			<a href="History">History</a> |
+			<a href="UserAccountPage">User Account</a>
+		</nav>
+		
+		<% User u= (User) session.getAttribute("login_user"); %>
 		<div class="user_table">
 			<table>
 				<tr>
 					<td>First Name</td>
-					<td>${userkey.user_fname}</td>
+					<td>${login_user.user_fname}</td>
 				</tr>
 				<tr>
 					<td>Last Name</td>
-					<td>${userkey.user_lname}</td>
+					<td>${login_user.user_lname}</td>
 				</tr>
 				<tr>
 					<td>Email</td>
-					<td>${userkey.user_email}</td>
+					<td>${login_user.user_email}</td>
 				</tr>
 				<tr>
 					<td>Password</td>
-					<td>${userkey.user_password}</td>
+					<td>${login_user.user_password}</td>
 				</tr>
 
 			</table>
-			<a href="modify">Modify Information</a>
+			<a href="edit_user/${login_user.user_id}">Edit</a>
 		</div>
 	</body>
 </html>

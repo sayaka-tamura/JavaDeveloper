@@ -17,9 +17,11 @@ public class User {
 	@Size(min=2, max=20, message="User name must be between {2} and {1}")	
 	private String user_lname;
 	
+	@NotNull
 	@EmailConstraint
 	private String user_email;
 	
+	@NotNull
 	@PasswordConstraint
 	private String user_password;
 	

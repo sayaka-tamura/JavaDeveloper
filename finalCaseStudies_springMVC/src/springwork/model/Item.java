@@ -1,13 +1,49 @@
 package springwork.model;
 
+import java.util.Date;
+
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Item{
 	private Integer item_id;
+	
+	//@NotNull(message = "Date is Required")
+	@DateTimeFormat(pattern="MM-dd-yyyy")
 	private java.util.Date item_date;
 	private String item_name;
+	
+	@NotNull(message = "Expense is Required")
 	private Double item_price;
+	
 	private Integer item_quantity;
 	private String item_category;
 	private Integer item_shopping_id;
+	
+	
+	public Item() {
+		super();
+		this.item_id = 0;
+		this.item_date = null;
+		this.item_name = "";
+		this.item_price = 0.0;
+		this.item_quantity = 0;
+		this.item_category = "";
+		this.item_shopping_id = 0;
+	}
+	
+	public Item(Integer item_id, Date item_date, String item_name, Double item_price, Integer item_quantity,
+			String item_category, Integer item_shopping_id) {
+		super();
+		this.item_id = item_id;
+		this.item_date = item_date;
+		this.item_name = item_name;
+		this.item_price = item_price;
+		this.item_quantity = item_quantity;
+		this.item_category = item_category;
+		this.item_shopping_id = item_shopping_id;
+	}
 
 	public Integer getItem_id() {
 		return item_id;

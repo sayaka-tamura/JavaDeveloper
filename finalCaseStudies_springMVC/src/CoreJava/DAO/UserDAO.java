@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import springwork.model.Item;
 import springwork.model.User;
 import CoreJava.util.OracleQueries;
 
@@ -68,7 +69,6 @@ public class UserDAO {
                 user.setUser_email(result.getString(4));
                 user.setUser_password(result.getString(5));
             }
-            System.out.println(user.getUser_fname());
             result.close();
 			
 		} catch (ClassNotFoundException | IOException | SQLException e) {
@@ -86,6 +86,39 @@ public class UserDAO {
 		return user;	
 	}
 	
+	/* --- Read A User Record by User ID --- */
+    public User getUserRecordById(int user_id)throws SQLException{
+	   User user = new User(); 
+	   Connection conn = null;
+       PreparedStatement stmt = null;
+       ResultSet result = null;
+       
+       try {
+       		conn = OracleConnection.getConnection();
+            stmt = conn.prepareStatement(OracleQueries.GETUSERBYITEMID);
+            stmt.setInt(1, user_id);
+            result = stmt.executeQuery();
+                   
+            if(result != null&&result.next()){
+	        	user.setUser_id(result.getInt(1));
+	        	user.setUser_fname(result.getString(2));
+	        	user.setUser_lname(result.getString(3));
+	        	user.setUser_email(result.getString(4));
+	        	user.setUser_password(result.getString(5));
+            }
+        } catch (ClassNotFoundException | IOException | SQLException e){
+            e.printStackTrace();
+        } finally {
+            if(stmt != null){
+                stmt.close();
+            }
+            if(conn != null){
+                conn.close();
+            }
+        }      
+        return user;
+    }
+    
 	//Update User
 	public boolean updateUser(User user) throws SQLException {
 		 
