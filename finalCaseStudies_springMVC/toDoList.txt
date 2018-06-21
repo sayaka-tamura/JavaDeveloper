@@ -1,0 +1,29 @@
+// -> modify item info(Done: 6/14)
+// -> implement USER UPDATE method to edit user info (Done: 6/15)
+// -> after create account, do not redirect to edit user info -> prompt "login" to user(Make another new page)(Done: 6/17)
+// -> log out function (Done: 6/17)
+// -> put log out success message (Done: 6/17)
+// -> want to put delete User function (Done: 6/17)
+// -> start to make test cases.(Done: 6/20)
+// -> Think of bycript (Done: 6/21)
+	
+		-> Think of validate login		
+		-> Write User Stroies
+																																			
+		-> make income table
+		-> Connect to Bank account
+		-> show checking, saving, total spending on this month, expenses by category
+		-> make a list for topage_User()
+		-> generate shopping id, put to item object
+		-> put search function
+		
+		-> Think of Cookie
+	  -> want to put sort function
+		-> Read, shopping info for History
+		-> check the way to solve different user can have the same shopping list.
+		-> don't want to show password on user account page
+	  
+<Reference for Testing> 
+https://www.petrikainulainen.net/spring-mvc-test-tutorial/
+https://antoniogoncalves.org/2006/08/16/how-to-unit-test-crud-operations/
+-> create Test for check DAO / Spring MVC Controller
