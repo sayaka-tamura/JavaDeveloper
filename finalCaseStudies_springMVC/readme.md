@@ -1,6 +1,7 @@
 # Case Study: Personal Budget Application
 
-**** construction
+Helps to manage monthly expenses and income.
+Expenses are categorized into "food", "Housing cost", etc., and you would be able to see your own spending trend.
 
 ## Getting Started
 
@@ -39,15 +40,24 @@ Run each test classes as JUnit test
 
 ## Known Bugs
 
-**** construction
+* Hash password is displayed
+* Shopping Id is not generated
+* Different user has the same 'History' page
 
 ## Uncompleted
 
-**** construction
+* Create income input function
+* Show checking, saving, total spending on this month, expenses by category
+* Show the list of checking, saving, total spending on this month on top page
+* Connect to Bank account
+* Put search function
+* Generate shopping id, and put it to each item object
+* Put sort function on list at 'History' page
 
 ## Problems faced
 
-**** construction
+* User information did not show up on 'User Account' page after user log in.
+* Some test cases did not work properly due to the unique key of a class I tested.
 
 ## Built With
 
@@ -65,6 +75,3 @@ Run each test classes as JUnit test
 
 * **Sayaka Tamura** - *Development* - (https://github.com/sayaka-tamura)
 
-## Acknowledgments
-
-**** construction
