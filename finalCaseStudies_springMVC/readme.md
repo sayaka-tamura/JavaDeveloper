@@ -69,7 +69,16 @@ Run each test classes as JUnit test
 
 ## User Stories
 
-**** construction
+* As a user, I can register user's account.
+* As a user, I can login with user's email and password that I registered.
+* As a user, I can log out.
+* As a user, I can put Item information such as price, name, date, quantity and category as my expense.
+* As a user, I can edit Item information such as price, name, date, quantity and category.
+* As a user, I can delete Item.
+* As a user, I can put income information for per month.
+* As a user, I can check history that show user expense and income that user typed so far.
+* As a user, I can see user account information.
+* As a user, I can edit user account information.
 
 ## Authors
 
